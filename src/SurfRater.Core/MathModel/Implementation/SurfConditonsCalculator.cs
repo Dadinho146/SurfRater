@@ -1,5 +1,4 @@
-﻿using SurfRater.Core.Data.Interfaces;
-using SurfRater.Core.Data.ValueObjects;
+﻿using SurfRater.Core.Data.ValueObjects;
 using SurfRater.Core.MathModel.Interfaces;
 
 namespace SurfRater.Core.MathModel.Implementation;

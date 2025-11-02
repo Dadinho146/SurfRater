@@ -18,20 +18,20 @@ public class WeatherData
     /// <summary>
     /// Wind speed, typically in km/h or m/s.
     /// </summary>
-    public double WindSpeed { get; set; }
+    public WeigthedObject<double> WindSpeed { get; set; }
 
     /// <summary>
     /// Wave height in meters.
     /// </summary>
-    public double WaveHeight { get; set; }
+    public WeigthedObject<double> WaveHeight { get; set; }
 
     /// <summary>
     /// Water temperature in degrees Celsius.
     /// </summary>
-    public double WaterTemperature { get; set; }
+    public WeigthedObject<double> WaterTemperature { get; set; }
 
     /// <summary>
     /// Air temperature in degrees Celsius.
     /// </summary>
-    public double AirTemperature { get; set; }
+    public WeigthedObject<double> AirTemperature { get; set; }
 }
