@@ -28,3 +28,5 @@ SurfRater is a .NET-based application designed to help surfers rate and review s
 - wave speed
 - wave height (more than x is good for me)
 - wave period (more than x seconds is good)
+
+- wind from continent to sea is good
