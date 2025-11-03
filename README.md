@@ -14,3 +14,6 @@ SurfRater is a .NET-based application designed to help surfers rate and review s
 - Release it on google playstore and apple store
 - User authentication and profiles
 - Make a ton of money from it and help ocean wild life from it
+
+- https://www.figma.com/design/TUYh654t2dvD9bSrUIYcen/Untitled?node-id=0-1&p=f&t=kfM9soPX4Qzqk7HN-0
+- https://www.windguru.cz/209199
