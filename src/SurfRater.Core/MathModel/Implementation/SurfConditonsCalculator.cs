@@ -15,7 +15,7 @@ public class SurfConditonsCalculator : ISurfConditonsCalculator
 
     public void Calculate()
     {
-        if (WeatherData == null)
-        Result = WeatherData.WindSpeed * 0.8 + WeatherData.WaveHeight * 1.2;
+        //if (WeatherData == null)
+        //Result = WeatherData.WindSpeed * 0.8 + WeatherData.WaveHeight * 1.2;
     }
 }
