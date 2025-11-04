@@ -1,4 +1,6 @@
-﻿using SurfRater.Core.Data.Interfaces;
+﻿using SurfRater.Core.Data;
+using SurfRater.Core.Data.Implementation.OpenMeteo;
+using System.Text.Json;
 
 namespace SurfRater.Core.Tests;
 
@@ -6,10 +8,32 @@ namespace SurfRater.Core.Tests;
 public sealed class Test1
 {
     [TestMethod]
-    public async Task TestMethod1Async()
+    [DataRow(1, 2, 3)]
+    [DataRow(50, 10, 60)]
+    [DataRow(10, 10, 20)]
+    public void TestarMetodoLegal(int num1, int num2, int resultadoExperado)
     {
-        IMarineForecast marineForecast = new Data.Implementation.OpenMeteoMarineForecast();
-        var result = await marineForecast.GetForecastAsync(-28.422904205663045, -48.737681609410465);
-        Console.WriteLine(result.ToString());
+        var instancia = new MinhaClasseLegal();
+        var result = instancia.ObterSoma(num1, num2);
+
+        Assert.AreEqual(resultadoExperado, result);
+    }
+    
+    [TestMethod]
+    public async Task RequisitionAsync()
+    {
+        var url = "https://marine-api.open-meteo.com/v1/marine?latitude=54.544587&longitude=10.227487&current=wave_height,wave_direction,wind_wave_direction";
+
+        using var httpClient = new HttpClient();
+        var response = await httpClient.GetStringAsync(url);
+
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
+
+        var weatherData = JsonSerializer.Deserialize<MarineWeatherResponse>(response, options);
+
+        Assert.IsTrue(true);
     }
 }
