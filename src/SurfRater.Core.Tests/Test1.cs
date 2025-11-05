@@ -18,22 +18,43 @@ public sealed class Test1
 
         Assert.AreEqual(resultadoExperado, result);
     }
-    
+
     [TestMethod]
     public async Task RequisitionAsync()
     {
-        var url = "https://marine-api.open-meteo.com/v1/marine?latitude=-28.494353&longitude=-48.760237&current=wave_height,wave_direction,wind_wave_direction&timezone=auto";
+        var url = "https://marine-api.open-meteo.com/v1/marine?latitude=-28.491909619641834&longitude=-48.75918702201946&current=wave_height,wave_direction,wind_wave_direction&timezone=auto";
 
         using var httpClient = new HttpClient();
-        var response = await httpClient.GetStringAsync(url);
 
-        var options = new JsonSerializerOptions
+        try
         {
-            PropertyNameCaseInsensitive = true
-        };
+            var response = await httpClient.GetStringAsync(url);
 
-        var weatherData = JsonSerializer.Deserialize<MarineWeatherResponse>(response, options);
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
 
-        Assert.IsTrue(true);
+            var weatherData = JsonSerializer.Deserialize<MarineWeatherResponse>(response, options);
+
+            if (weatherData?.Current == null)
+            {
+                Assert.Inconclusive("Sem dados marinhos disponíveis para esta coordenada.");
+            }
+            else
+            {
+                Assert.IsTrue(weatherData.Current.Wave_Height > 0, "Altura da onda deve ser maior que zero.");
+            }
+        }
+        catch (HttpRequestException ex)
+        {
+            Assert.Inconclusive($"Erro na requisição: {ex.Message}");
+        }
+        catch (JsonException ex)
+        {
+            Assert.Inconclusive($"Erro ao interpretar resposta da API: {ex.Message}");
+        }
     }
 }
+
+//-28.491909619641834, -48.75918702201946
