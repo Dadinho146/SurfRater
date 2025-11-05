@@ -1,14 +1,11 @@
-using SurfRater.Maui.Models;
+namespace SurfRater.Maui.Pages;
 
-namespace SurfRater.Maui.Pages
+public partial class ProjectDetailPage : ContentPage
 {
-    public partial class ProjectDetailPage : ContentPage
+    public ProjectDetailPage(ProjectDetailPageModel model)
     {
-        public ProjectDetailPage(ProjectDetailPageModel model)
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            BindingContext = model;
-        }
+        BindingContext = model;
     }
 }

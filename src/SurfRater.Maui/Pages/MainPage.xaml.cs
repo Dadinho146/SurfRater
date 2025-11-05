@@ -1,14 +1,10 @@
-﻿using SurfRater.Maui.Models;
-using SurfRater.Maui.PageModels;
+﻿namespace SurfRater.Maui.Pages;
 
-namespace SurfRater.Maui.Pages
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    public MainPage(MainPageModel model)
     {
-        public MainPage(MainPageModel model)
-        {
-            InitializeComponent();
-            BindingContext = model;
-        }
+        InitializeComponent();
+        BindingContext = model;
     }
 }
