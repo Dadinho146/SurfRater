@@ -1,16 +1,9 @@
 ﻿using System.Text.Json;
-using SurfRater.Core.Data;
 using SurfRater.Core.Data.Implementation.OpenMeteo;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Globalization;
-
-
 
 namespace SurfRater.Core.Tests;
 
 [TestClass]
-
-
 public sealed class Test1
 {
     private static List<(double Latitude, double Longitude)> GerarMalhaDeCoordenadas(
